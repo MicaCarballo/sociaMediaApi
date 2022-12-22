@@ -31,7 +31,7 @@ const postLogin = (req, res) => {
             })
     } else {
         res.status(400).json({message: 'Missing Data', fields: {
-            email: 'example@example.com',
+            email: 'micacarballo2@gmail.com',
             password: "string"
         }})
     }
