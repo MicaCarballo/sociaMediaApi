@@ -7,10 +7,11 @@ const config = require('../../config')
        
 const postLogin = (req, res) => {
     const {email, password} = req.body
-
+  
     if(email && password){
         authControllers.checkUsersCredentials(email, password)
             .then((data) => {
+                
                 if(data){
                     const token = jwt.sign({
                         id: data.id,
@@ -21,7 +22,18 @@ const postLogin = (req, res) => {
                     res.status(200).json({
                         message: 'Correct Credentials!',
                         token,
-                        
+                        id : data.id,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        gender: data.gender,
+                        birthday: data.birthday,
+                        nickName: data.nickName,
+                        profileImg: data.profileImg,
+                        role: data.role,
+                        status: data.status,
+                        isVerified: data.isVerified
+
                     })
                 } else {
                     res.status(401).json({message: 'Invalid Credentials'})
