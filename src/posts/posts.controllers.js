@@ -21,7 +21,7 @@ const createPost = async (obj) => {
         id: uuid.v4(),
         userId: obj.userId,
         content: obj.content,
-        img:obj.img
+        
     })
     return data
 }

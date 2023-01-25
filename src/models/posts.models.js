@@ -23,12 +23,7 @@ const Posts = db.define('posts', {
             len: [1, Infinity]
         }
     },
-    img:{
-        type: DataTypes.TEXT,
-        validate: {
-            isUrl: true
-        }
-    }
+   
 
 })
 module.exports = Posts
