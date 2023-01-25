@@ -28,15 +28,16 @@ const getPostById = ( req, res ) => {
 const postNewPost = ( req, res ) => {
     const userId = req.user.id 
     const {content} = req.body 
-    const {imgurl}= req.body
-    postControllers.createPost({userId, content, imgurl})
+    const{img}= req.body
+    postControllers.createPost({userId, content, img})
         .then(data => {
             res.status(201).json(data)
         })
         .catch(err => {
             res.status(400).json({message: err.message, fields: {
                 content: 'text',
-                imgurl: 'text'
+                img:'text'
+                
             }})
         })
 }
