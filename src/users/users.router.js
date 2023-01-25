@@ -19,6 +19,9 @@ router.route('/:id')
     .patch(passportJWT.authenticate('jwt', {session: false}), roleMiddleware, userServices.patchUser)
     .delete(passportJWT.authenticate('jwt', {session: false}), roleMiddleware, userServices.deleteUser)
 
+    router.route('/email/:email')
+    .get(userServices.getUserByEmail)
+
     router.route('/:id/follow')
     .post(passportJWT.authenticate('jwt', {session: false}), followServices.postFollower)
 module.exports = router

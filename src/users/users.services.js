@@ -26,6 +26,20 @@ const getUserById = (req, res) => {
             res.status(400).json({message: err.message})
         })
 }
+const getUserByEmail = (req, res) => {
+    const email = req.params.email
+    userControllers.findUserByEmail(email)
+        .then((data) => {
+            if(data){
+                res.status(200).json(data)
+            } else {
+                res.status(404).json({message: 'Invalid email'})
+            }
+        })
+        .catch((err) => {
+            res.status(400).json({message: err.message})
+        })
+}
 
 const getMyUser = (req, res) => {
     const id = req.user.id 
@@ -131,5 +145,6 @@ module.exports= {
     patchMyUser,
     patchUser,
     deleteMyUser,
-    deleteUser
+    deleteUser,
+    getUserByEmail
 }

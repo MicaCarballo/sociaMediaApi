@@ -20,7 +20,8 @@ const createPost = async (obj) => {
     const data = await Posts.create({
         id: uuid.v4(),
         userId: obj.userId,
-        content: obj.content
+        content: obj.content,
+        imgurl:obj.imgurl
     })
     return data
 }

@@ -34,6 +34,7 @@ const postLike = (req, res) => {
         })
 }
 
+
 module.exports = {
     getAllLikesByPost, 
     postLike

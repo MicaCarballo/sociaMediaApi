@@ -22,6 +22,12 @@ const Posts = db.define('posts', {
         validate: {
             len: [1, Infinity]
         }
+    },
+    imgurl:{
+        type: DataTypes.STRING,
+        validate: {
+            isUrl: true
+        }
     }
 
 })

@@ -15,6 +15,7 @@ const findAllUsers = async () => {
     return data
 }
 
+
 const findUserById = async (id) => {
     const data = await Users.findOne({
         attributes: {
@@ -35,6 +36,7 @@ const findUserByEmail = async (email) => {
     })
     return data
 }
+
 
 const createUser = async (obj) => {
     const data = await Users.create({
