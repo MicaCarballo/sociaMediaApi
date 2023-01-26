@@ -100,8 +100,9 @@ const patchUser = (req, res) => {
 
 const patchMyUser = (req, res) => {
     const id = req.user.id
-    const { firstName, lastName, gender, birthday,profileImg } = req.body
-    userControllers.updateUser(id, {firstName, lastName, gender, birthday,profileImg})
+    const { firstName, lastName, gender, birthday,profileImg,nickName
+     } = req.body
+    userControllers.updateUser(id, {firstName, lastName, gender, birthday,profileImg,nickName})
         .then(() => {
             res.status(200).json({message: 'Your user was edited succesfully!'})
         })
