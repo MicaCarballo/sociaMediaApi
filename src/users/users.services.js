@@ -54,14 +54,14 @@ const getMyUser = (req, res) => {
 
 
 const postUser = (req, res) => {
-    const {firstName, lastName, nickName, email, password, gender, birthday} = req.body
-    userControllers.createUser({firstName, lastName, nickName, email, password,gender, birthday})
+    const {firstName, lastName, nickName, email, password, gender, birthday, profileImg} = req.body
+    userControllers.createUser({firstName, lastName, nickName, email, password,gender, birthday, profileImg})
         .then(async(data) => {
             await mailer.sendMail({
                 from: '<micacarballo2@gmail.com>',
                 to: data.email,
                 subject: `Bienvenido ${data.firstName}`,
-                html: `<h1>Bienvenido a nuestra app ${data.firstName}</h1> <a href="#" class="myButton">turquoise</a> `,
+                html: `<h1>Bienvenido a nuestra app ${data.firstName}</h1> `,
                 text: 'Que gusto verte por aqui',
                 
             })
@@ -83,9 +83,9 @@ const postUser = (req, res) => {
 //? Solo admins pueden ejecutarlo
 const patchUser = (req, res) => {
     const id = req.params.id 
-    const {firstName, lastName, email, gender, birthday, role, status} = req.body
+    const {firstName, lastName, email, gender, birthday, role, status, profileImg} = req.body
 
-    userControllers.updateUser(id, {firstName, lastName, email, gender, birthday, role, status})
+    userControllers.updateUser(id, {firstName, lastName, email, gender, birthday, role, status,profileImg})
         .then((data) =>{
             if(data){
                 res.status(200).json({message: `User edited succesfully with id: ${id}`})
@@ -100,8 +100,8 @@ const patchUser = (req, res) => {
 
 const patchMyUser = (req, res) => {
     const id = req.user.id
-    const { firstName, lastName, gender, birthday } = req.body
-    userControllers.updateUser(id, {firstName, lastName, gender, birthday})
+    const { firstName, lastName, gender, birthday,profileImg } = req.body
+    userControllers.updateUser(id, {firstName, lastName, gender, birthday,profileImg})
         .then(() => {
             res.status(200).json({message: 'Your user was edited succesfully!'})
         })
