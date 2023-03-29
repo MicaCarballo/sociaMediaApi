@@ -9,9 +9,8 @@ const findAllLikesFromPost = async (postId) => {
         },
         include: {
             model: Users,
-            attributes: ['id', 'firstName', 'lastName'],
-            model:Likes,
-            attributes:['id']
+            attributes: ['id', 'firstName', 'lastName']
+            
 
         }
     })
