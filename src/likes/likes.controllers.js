@@ -12,7 +12,12 @@ const findAllLikesFromPost = async (postId) => {
             attributes: ['id', 'firstName', 'lastName']
         }
     })
-    return data.map(like => like.user)
+    return data.map((like)=> {
+        let user = like.user
+     
+    user.like = like.id
+    return user
+    })
 }
 
 const createLike = async (obj) => {
