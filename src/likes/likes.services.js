@@ -6,9 +6,9 @@ const getAllLikesByPost = (req, res) => {
         .then(data => {
             if(data){
                 res.status(200).json({
-                    // count: data.length,
-                    // users: data
-                    data
+                    count: data.length,
+                    users: data
+                    
                 })
             } else {
                 res.status(404).json({message: 'Invalid ID'})

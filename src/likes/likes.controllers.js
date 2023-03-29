@@ -9,14 +9,18 @@ const findAllLikesFromPost = async (postId) => {
         },
         include: {
             model: Users,
-            attributes: ['id', 'firstName', 'lastName']
+            attributes: ['id', 'firstName', 'lastName'],
+            model:Likes,
+            attributes:['id']
+
         }
     })
     return data.map((like)=> {
-        let user = like.user
+    //     let user = like.user
      
-    user.like = like.id
-    return user
+    // user.like = like.id
+    // return user
+    return like
     })
 }
 
