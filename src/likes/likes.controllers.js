@@ -43,6 +43,16 @@ const createLike = async (obj) => {
     })
     return data
 }
+
+const findLikeById = async (id) => {
+    const data = await Likes.findOne({
+        where: {
+            id: id
+        }
+    })
+    return data
+}
+
 const removeLike = async (id) => {
    const like = await Likes.findByPk(id)
    if(!like){
@@ -61,5 +71,6 @@ const removeLike = async (id) => {
 module.exports = {
     findAllLikesFromPost,
     createLike,
-    removeLike
+    removeLike,
+    findLikeById
 }
