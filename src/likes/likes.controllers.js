@@ -33,12 +33,8 @@ const createLike = async (obj) => {
     })
 
     if(validate){
-        await Likes.destroy({
-            where: {
-                userId: obj.userId,
-                postId: obj.postId
-            }
-        })
+        await Likes.destroy(
+          )
     }
     
     const data = await Likes.create({
