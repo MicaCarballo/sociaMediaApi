@@ -19,7 +19,7 @@ const findAllLikesFromPost = async (postId) => {
      
     // user.like = like.id
     // return user
-    return like
+    return like.user
     })
 }
 
