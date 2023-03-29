@@ -34,8 +34,25 @@ const postLike = (req, res) => {
         })
 }
 
+const deleteLike = (req, res) => {
+    const id = req.params.id 
+    likeControllers.removeLike(id)
+        .then(data => {
+            if(data){
+                res.status(204).send()
+            } else {
+                res.status(404).json({message: 'Invalid ID'})
+            }
+        })
+        .catch(err => {
+            res.status(400).json({message: err.message})
+        })
+}
+
+
 
 module.exports = {
     getAllLikesByPost, 
-    postLike
+    postLike,
+    deleteLike
 }

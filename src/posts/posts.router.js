@@ -16,6 +16,7 @@ router.route('/:id')
 router.route('/:id/likes')
     .get(likeServices.getAllLikesByPost)
     .post(passportJWT.authenticate('jwt', {session: false}), likeServices.postLike)
+    .delete(passportJWT.authenticate('jwt', {session: false}), likeServices.deleteLike)
     
 
 module.exports = router

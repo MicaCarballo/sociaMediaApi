@@ -39,7 +39,14 @@ const findMyFollowings = async (userId) => {
     })
     return data.map(item => item.following)
 }
-
+const removeFollow = async (userId) => {
+    const data = await Follows.destroy({
+        where: {
+            userId: userId
+        }
+    })
+    return data
+}
 
 
 module.exports = {

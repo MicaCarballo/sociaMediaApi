@@ -35,9 +35,23 @@ const createLike = async (obj) => {
     })
     return data
 }
+const removeLike = async (id) => {
+   const like = await Likes.findByPk(id)
+   if(!like){
+    return null
+   } 
+   await like.destroy()
 
+    // const data = await Likes.destroy({
+    //     where: {
+    //         id: id
+    //     }
+    // })
+    return like
+}
 
 module.exports = {
     findAllLikesFromPost,
-    createLike
+    createLike,
+    removeLike
 }
