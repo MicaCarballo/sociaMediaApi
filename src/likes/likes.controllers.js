@@ -33,16 +33,22 @@ const createLike = async (obj) => {
     })
 
     if(like){
-        await like.destroy(
-          )
+        await like.destroy()
+    }else{
+        const data = await Likes.create({
+            id: uuid.v4(),
+            userId: obj.userId,
+            postId: obj.postId
+
+            
+
+        })
+        return data
+
     }
     
-    const data = await Likes.create({
-        id: uuid.v4(),
-        userId: obj.userId,
-        postId: obj.postId
-    })
-    return data
+   
+    
 }
 
 const findLikeById = async (id) => {
