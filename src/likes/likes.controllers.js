@@ -25,15 +25,15 @@ const findAllLikesFromPost = async (postId) => {
 
 const createLike = async (obj) => {
 
-    const validate = await Likes.findOne({
+    const like = await Likes.findOne({
         where: {
             userId: obj.userId,
             postId: obj.postId
         }
     })
 
-    if(validate){
-        await Likes.destroy(
+    if(like){
+        await like.destroy(
           )
     }
     
