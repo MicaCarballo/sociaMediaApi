@@ -21,13 +21,15 @@ const followUser = async (follower, following) => {
 
     }
   })
-  if(!follow){
+  if(follow){
+   await follow.destroy()
+  }else{
     const data = await Follows.create({
-                id: uuid.v4(),
-                userId: follower,
-                userId2: following
-            })
-            return data
+        id: uuid.v4(),
+        userId: follower,
+        userId2: following
+    })
+    return data
   }
 
 }
