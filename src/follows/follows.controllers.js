@@ -14,14 +14,17 @@ const Users = require('../models/users.models')
 
 const followUser = async (follower, following) => {
   const follow = await Follows.findOne({
-    where: {
-        id: uuid.v4(),
-        userId: follower,
-        userId2: following
 
-    }
+    uniqueKeys: {
+        follows_unique: {
+            fields: ['userId', 'userId2']
+        }
+    
+}
+   
+
   })
-  if(!follow){
+  if(follow){
    await follow.destroy()
   }else{
     const data = await Follows.create({
