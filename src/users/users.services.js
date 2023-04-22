@@ -60,8 +60,8 @@ const postUser = (req, res) => {
             await mailer.sendMail({
                 from: '<micacarballo2@gmail.com>',
                 to: data.email,
-                subject: `Bienvenido ${data.firstName}`,
-                html: `<h1>Bienvenido a nuestra app ${data.firstName}</h1> `,
+                subject: "You registered to SocialMica!",
+                html: `<h1>Welcome to SocialMica ${data.firstName}</h1> `,
                 text: 'Que gusto verte por aqui',
                 
             })
